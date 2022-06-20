@@ -957,7 +957,7 @@ class BlinkSession(BlinkSessionBase):
     def _NH_DNSLookupDidSucceed(self, notification):
         notification.center.remove_observer(self, sender=notification.sender)
         if notification.sender is self.lookup:
-            routes = notification.data.result
+            routes = self.account.actual_route
             if routes:
                 self.routes = routes
                 self.state = 'connection/dns_lookup_succeeded'
